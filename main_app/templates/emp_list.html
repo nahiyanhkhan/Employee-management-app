@@ -2,8 +2,26 @@
 
 {% block content %}
 
-<h1 style="text-align: center;">Employee List</h1>
+<h1 style="text-align: center;">All Employee List</h1>
 
+<table>
+    <tr>
+        <th>SL</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Designation</th>
+        <th>Description</th>
+    </tr>
+    {% for employee in employees %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td><a href="{% url 'emp_details' employee.id %}">{{ employee.name }}</a></td>
+        <td>{{ employee.address }}</td>
+        <td>{{ employee.designation }}</td>
+        <td>{{ employee.description }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
 
 {% endblock %}

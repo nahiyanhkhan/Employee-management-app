@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <h1 style="text-align: center;">Update/Delete Employee</h1>
+
+    <form method="post" style="width: 50%;">
+        {% csrf_token %}
+        {% for field in search_form %}
+        Search employee by name:
+        {{ field }}
+        {% endfor %}
+        <button type="submit">Search</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>SL</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{% url 'emp_details' employee.id %}">{{ employee.name }}</a></td>
+            <td>{{ employee.phone }}</td>
+            <td>
+                <a href="{% url 'update_emp' employee.id %}">Update</a> |
+                <a href="{% url 'delete_emp' employee.id %}" onclick="return confirmDelete()">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+
+{% endblock %}

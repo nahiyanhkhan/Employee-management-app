@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+    <h1 style="text-align: center;">Employee Details</h1>
+    <table>
+        <tr>
+            <td><b>Name</b></td>
+            <td>{{ employee.name }}</td>
+        </tr>
+        <tr>
+            <td><b>Address</b></td>
+            <td>{{ employee.address }}</td>
+        </tr>
+        <tr>
+            <td><b>Phone</b></td>
+            <td>{{ employee.phone }}</td>
+        </tr>
+        <tr>
+            <td><b>Salary</b></td>
+            <td>{{ employee.salary }}</td>
+        </tr>
+        <tr>
+            <td><b>Designation</b></td>
+            <td>{{ employee.designation }}</td>
+        </tr>
+        <tr>
+            <td><b>Description</b></td>
+            <td>{{ employee.description }}</td>
+        </tr>
+    </table>
+</div>
+
+
+{% endblock %}
