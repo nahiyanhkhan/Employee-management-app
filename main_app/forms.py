@@ -7,6 +7,12 @@ class EmployeeForm(forms.ModelForm):
         model = Employee
         fields = "__all__"
 
+    def clean_phone(self):
+        phone = self.cleaned_data.get("phone")
+        if not phone.isdigit():
+            raise forms.ValidationError("Phone number must contain only digits.")
+        return phone
+
 
 class UpdateEmployeeForm(EmployeeForm):
 

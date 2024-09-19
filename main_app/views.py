@@ -16,8 +16,8 @@ def add_emp(request):
         if add_emp_form.is_valid():
             add_emp_form.save()
             return redirect("home")
-        else:
-            add_emp_form = EmployeeForm(add_emp_form.errors)
+        # else:
+        # add_emp_form = EmployeeForm(add_emp_form.errors)
     else:
         add_emp_form = EmployeeForm()
     return render(request, "add_emp.html", {"form": add_emp_form})
