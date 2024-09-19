@@ -16,8 +16,6 @@ def add_emp(request):
         if add_emp_form.is_valid():
             add_emp_form.save()
             return redirect("home")
-        # else:
-        # add_emp_form = EmployeeForm(add_emp_form.errors)
     else:
         add_emp_form = EmployeeForm()
     return render(request, "add_emp.html", {"form": add_emp_form})
@@ -31,12 +29,8 @@ def update_emp(request, pk):
             if update_emp_form.is_valid():
                 update_emp_form.save()
                 return redirect("home")
-            else:
-                update_emp_form = UpdateEmployeeForm(
-                    update_emp_form.errors, instance=employee
-                )
-                return render(request, "update_emp.html", {"form": update_emp_form})
-        update_emp_form = UpdateEmployeeForm(instance=employee)
+        else:
+            update_emp_form = UpdateEmployeeForm(instance=employee)
         return render(request, "update_emp.html", {"form": update_emp_form})
 
     except Employee.DoesNotExist:
