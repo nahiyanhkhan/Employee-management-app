@@ -11,10 +11,22 @@ class EmployeeForm(forms.ModelForm):
         phone = self.cleaned_data.get("phone")
         if not phone.isdigit():
             raise forms.ValidationError("Phone number must contain only digits.")
-        if Employee.objects.filter(phone=phone).exists():
-            raise forms.ValidationError(
-                "An employee with this phone number already exists."
-            )
+
+        if self.instance.id:
+            if (
+                Employee.objects.filter(phone=phone)
+                .values()
+                .exclude(id=self.instance.id)
+                .exists()
+            ):
+                raise forms.ValidationError(
+                    "An employee with this phone number already exists."
+                )
+        else:
+            if Employee.objects.filter(phone=phone).exists():
+                raise forms.ValidationError(
+                    "An employee with this phone number already exists."
+                )
         return phone
 
 

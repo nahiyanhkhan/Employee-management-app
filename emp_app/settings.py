@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     "main_app",
 ]
 
+LOGIN_URL = "/login/"  # Path to the login page
+LOGIN_REDIRECT_URL = "/"  # Redirects to the home page after successful login
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",

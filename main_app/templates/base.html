@@ -12,9 +12,11 @@
     <nav style="margin-top: 30px;">
         <table>
             <tr>
+                <td> Hi <strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong> </td>
                 <td><a href="/">Home</a></td>
                 <td><a href="/add/">Add Employee</a></td>
                 <td><a href="/action/">Update/Delete Employee</a></td>
+                <td><a href="/logout/">Logout</a></td>
             </tr>
         </table>
     </nav>
